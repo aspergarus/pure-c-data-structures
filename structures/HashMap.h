@@ -12,6 +12,6 @@ typedef struct HashMap {
 } HashMap;
 
 HashMap* HashMap_new(int size);
-int HashMap_hash(char* key, int size, int mapLimit);
-void HashMap_insert(HashMap* map, char* key, int value, int size);
-int HashMap_get(HashMap* map, char* key, int size);
+int HashMap_hash(char* key, int mapLimit);
+void HashMap_insert(HashMap* map, char* key, int value);
+int HashMap_get(HashMap* map, char* key);

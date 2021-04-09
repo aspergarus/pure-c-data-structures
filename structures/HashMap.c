@@ -4,6 +4,8 @@
 
 #include "HashMap.h"
 
+#define HASH_KEY_SIZE 255
+
 HashMap* HashMap_new(int size) {
     HashMap *map = (HashMap*) malloc(sizeof(HashMap));
     map->size = size;
@@ -16,13 +18,13 @@ HashMap* HashMap_new(int size) {
     return map;
 }
 
-int HashMap_hash(char* key, int size, int mapLimit) {
+int HashMap_hash(char* key, int mapLimit) {
     char c = key[0];
     int breakLimit = 100;
     int i = 0;
     int res = 0;
 
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < HASH_KEY_SIZE; i++) {
         // printf("str[%d] = %c, %d\n", i, c, res);
 
         if (i >= breakLimit) {
@@ -36,9 +38,9 @@ int HashMap_hash(char* key, int size, int mapLimit) {
     return res % mapLimit;
 }
 
-void HashMap_insert(HashMap* map, char* key, int value, int size) {
+void HashMap_insert(HashMap* map, char* key, int value) {
     // printf("HashMap_insert, key = %s, data = %d\n", key, value);
-    int hashedKey = HashMap_hash(key, size, map->size);
+    int hashedKey = HashMap_hash(key, map->size);
     // printf("hashedKey = %d\n", hashedKey);
 
     HashMapEl* el = (HashMapEl*) malloc(sizeof(HashMapEl));
@@ -59,8 +61,8 @@ void HashMap_insert(HashMap* map, char* key, int value, int size) {
     }
 }
 
-int HashMap_get(HashMap* map, char* key, int size) {
-    int hashedKey = HashMap_hash(key, size, map->size);
+int HashMap_get(HashMap* map, char* key) {
+    int hashedKey = HashMap_hash(key, map->size);
 
     HashMapEl* current = map->list[hashedKey];
 
