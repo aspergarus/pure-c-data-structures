@@ -12,6 +12,9 @@ compile-hashmap:
 compile-treemap:
 	gcc -o demo-treemap.exe demo-treemap.c structures/TreeMap.c
 
+compile-anylist:
+	gcc -o demo-anylist.exe demo-anylist.c
+
 list:
 	gcc -o demo-list.exe demo-list.c structures/LinkedList.c && ./demo-list.exe
 
@@ -24,5 +27,5 @@ hash:
 tree:
 	gcc -o demo-treemap.exe demo-treemap.c structures/TreeMap.c && ./demo-treemap.exe
 
-demo:
-	gcc -o demo.exe demo.c structures/LinkedList.c && ./demo.exe	
+anylist:
+	gcc -o demo-anylist.exe demo-anylist.c && ./demo-anylist.exe
